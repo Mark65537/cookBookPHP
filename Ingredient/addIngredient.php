@@ -1,5 +1,6 @@
 <?php
-include "layout.php"
+include "layout.php";
+//header('Content-type: application/json');
 ?>
 <h1>Add Ingredient Form</h1>
 <form method="post" action="addIngredientCheck.php">

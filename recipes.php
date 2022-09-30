@@ -16,7 +16,7 @@ while($obj = $data->fetch()) {
     echo '<div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 200px; border-radius: 21px 21px 0 0;">';
     echo "$obj->foto<br>";
     echo "<a href='recipe.php?id=$obj->id'>$obj->name</a></p>";
-    echo "<a href='updateRecipes.php?id=$obj->id'>Update</a> <a href='deleteRecipes.php?id=$obj->id'>Delete</a>";
+    echo "<a href='Recipe/updateRecipe.php?id=$obj->id'>Update</a> <a href='Recipe/deleteRecipe.php?id=$obj->id'>Delete</a>";
     echo '</div><p>';
 }
 

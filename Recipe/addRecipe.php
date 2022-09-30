@@ -7,7 +7,7 @@
 ?>
 
 <h1>Add Recipe Form</h1>
-    <form method="post" action="addRecipeCheck.php">
+    <p method="post" action="addRecipeCheck.php">
 
         <label for="file">Foto</label></p>
         <input type="file" name="foto" id="r_foto" value="Add Foto" class="form-control">
@@ -17,22 +17,22 @@
 
         <label for="">Ingredients</label></p>
         <div>
-            <select name="ingredient[]">
+            <select id="select" name="ingredients[]">
                 <?php foreach ($ingrs as $obj): ?>
                     <p><option value="<?php echo $obj->id;?>"> <?php echo $obj->name; ?> </option></p>
                 <?php endforeach; ?>
             </select>
+            <label id="measure" for="">measure</label>
+            <input id="num" type="number" min="1" max="9000" step="1" value="1"/>
+            <button type="button" name="ingrAdd" id="ingrAdd">ADD</button>
+        </div></p>
+
+
+        <div id="ingrDiv" style="background:lightgrey">
+
         </div>
 
-
-        <div style="color:#966636">
-            <span></span>
-            <button type="button">
-                X
-            </button>
-        </div>
-
-        <textarea type="text" name="ingredients" id="r_ingr" class="form-control"></textarea>
+<!--        <textarea type="text" name="ingredients" id="r_ingr" class="form-control"></textarea>-->
 
         <label for="">Steps</label></p>
         <textarea type="text" name="steps" id="r_steps" class="form-control"></textarea></p>

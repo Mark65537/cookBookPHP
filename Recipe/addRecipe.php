@@ -7,7 +7,7 @@
 ?>
 
 <h1>Add Recipe Form</h1>
-    <form method="post" action="addRecipeCheck.php">
+    <form method="post" action="addRecipeCheck.php" id="formRecipe">
 
         <label for="file">Foto</label><br>
         <input type="file" name="foto" id="r_foto" value="Add Foto" class="form-control">
@@ -28,7 +28,8 @@
                 <button type="button" name="ingrAdd" id="ingrAdd">ADD</button>
             </div></p>
 
-            <div id="ingrDiv"  name="ingredients[]" style="background:lightgrey">
+            <input name='ingredients' id='ingrInp' type='hidden' />
+            <div id="ingrDiv" style="background:lightgrey">
 
             </div>
         </div>

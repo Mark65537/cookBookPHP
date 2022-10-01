@@ -10,5 +10,5 @@ if(!empty($_POST)){
 
 
 
-//header('HTTP/1.1 200 OK');
-//header('Location: http://'.$_SERVER['HTTP_HOST'].'/cookBookPHP/recipes.php');
+header('HTTP/1.1 200 OK');
+header('Location: http://'.$_SERVER['HTTP_HOST'].'/cookBookPHP/recipes.php');

@@ -1,4 +1,10 @@
 $(document).ready(function(){
+    $("#fotoInp").change(function() {
+        if (window.FormData === undefined) {
+            alert('В вашем браузере загрузка файлов не поддерживается');
+        }
+    });
+
     $("#ingrAdd").on("click", function(){//кнопка для добавления ингредиентов
         ingr=$('#ingrSel option:selected').html();
         num=$('#num').val();
@@ -27,4 +33,45 @@ $(document).ready(function(){
             }
         });
     });
+
+    $("#fotoInp").on("click", function(e){
+    });
+
 });
+// $(document).domContentLoadedEventStart(function() {
+//     console.log("DOMContentLoaded");
+// })
+document.addEventListener("DOMContentLoaded", readyy);
+
+function readyy(event) {
+    let fileName = document.querySelector('#fotoInp').defaultValue
+    let file = new File([fileName], fileName,{lastModified:new Date().getTime()}, 'utf-8');
+    let container = new DataTransfer();
+    container.items.add(file);
+    document.querySelector('#fotoInp').files = container.files;
+}
+
+function loadURLToInputFiled(url){
+    getImgURL(url, (imgBlob)=>{
+        // Load img blob to input
+        // WIP: UTF8 character error
+        let fileName = 'hasFilename.jpg'
+        let file = new File([imgBlob], fileName,{type:"image/jpeg", lastModified:new Date().getTime()}, 'utf-8');
+        let container = new DataTransfer();
+        container.items.add(file);
+        document.querySelector('#foto').files = container.files;
+
+    })
+}
+
+// xmlHTTP return blob respond
+function getImgURL(url, callback){
+    console.log("xml");
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function() {
+        callback(xhr.response);
+    };
+    xhr.open('GET', url);
+    xhr.responseType = 'blob';
+    xhr.send();
+}

@@ -6,6 +6,7 @@ if(!empty($_GET) && isset($_GET['id'])) {
     $id=$_GET['id'];
     $data = $pdo->query('SELECT * FROM recipe_models WHERE id=' . $id);
     $result = $data->fetch(PDO::FETCH_OBJ);
+    $foto = $result->foto;
     $name = $result->name;
     $ingredients = $result->ingredients;
     $steps = $result->steps;
@@ -14,13 +15,41 @@ if(!empty($_GET) && isset($_GET['id'])) {
     $ingrs = $data->fetchAll(PDO::FETCH_OBJ);
     $firstMeas=$ingrs[0]->measure;
     echo <<< END
+<script >
+    function loadURLToInputFiled(url){
+    //getImgURL(url, (imgBlob)=>{
+        // Load img blob to input
+        // WIP: UTF8 character error
+        let fileName = 'hasFilename.jpg'
+        let file = new File(['https://i.pinimg.com/originals/eb/a1/ab/eba1abc70abe1021cd3b7f34fe20d720.jpg'], fileName);
+        let container = new DataTransfer();
+        container.items.add(file);
+        document.querySelector('#foto').files = container.files;
+
+    // })
+}
+
+// xmlHTTP return blob respond
+function getImgURL(url, callback){
+    console.log("xml");
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function() {
+        callback(xhr.response);
+    };
+    xhr.open('GET', url);
+    xhr.responseType = 'blob';
+    xhr.send();
+}
+</script>
 <h1>Add Recipe Form</h1>
     <form method="post" action="updateRecipeCheck.php" id="formRecipe">
 
         <input type="hidden" name="id" value="$id">
         
+        <input type="button" name="id" value="$id" onclick="loadURLToInputFiled('https://i.pinimg.com/originals/eb/a1/ab/eba1abc70abe1021cd3b7f34fe20d720.jpg')">
+        
         <label for="file">Foto</label><br>
-        <input type="file" name="foto" id="r_foto" value="Add Foto" class="form-control">
+        <input type="file" name="fotoInp" id="fotoInp" value="$foto"  class="form-control">
 
         <label for="">Recipe name</label></p>
         <input type="text" name="name" id="r_name" class="form-control" value="$name">

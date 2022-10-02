@@ -41,15 +41,15 @@ function getImgURL(url, callback){
     xhr.send();
 }
 </script>
-<h1>Add Recipe Form</h1>
-    <form method="post" action="updateRecipeCheck.php" id="formRecipe">
+<h1>Update Recipe Form</h1>
+    <form method="post" action="updateRecipeCheck.php" id="formRecipe" enctype="multipart/form-data">
 
         <input type="hidden" name="id" value="$id">
         
         <input type="button" name="id" value="$id" onclick="loadURLToInputFiled('https://i.pinimg.com/originals/eb/a1/ab/eba1abc70abe1021cd3b7f34fe20d720.jpg')">
         
         <label for="file">Foto</label><br>
-        <input type="file" name="fotoInp" id="fotoInp" value="$foto"  class="form-control">
+        <input type="file" name="foto" id="fotoInp" value="$foto"  class="form-control">
 
         <label for="">Recipe name</label></p>
         <input type="text" name="name" id="r_name" class="form-control" value="$name">

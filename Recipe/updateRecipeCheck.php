@@ -25,9 +25,14 @@ try{
             exit();
         }
     }
-    if(!empty($_POST) && isset($_POST['id'])){
-        $pdo->exec("UPDATE recipe_models SET name = \"{$_POST['name']}\", ingredients=\"{$_POST['ingredients']}\",
+    if(!empty($_POST) && isset($_POST['id']) && !empty($_POST['name'])){
+        if(isset($_FILES['foto']) && !empty($_FILES['foto']))
+            $pdo->exec("UPDATE recipe_models SET name = \"{$_POST['name']}\", ingredients=\"{$_POST['ingredients']}\",
                                 steps=\"{$_POST['steps']}\", foto = \"{$newFileName}\"
+                             WHERE id=\"{$_POST['id']}\"");
+        else
+            $pdo->exec("UPDATE recipe_models SET name = \"{$_POST['name']}\", ingredients=\"{$_POST['ingredients']}\",
+                                steps=\"{$_POST['steps']}\"
                              WHERE id=\"{$_POST['id']}\"");
     }else{
         debug_to_console("your request is empty");
@@ -36,5 +41,5 @@ try{
     debug_to_console($e->getMessage());
 }
 
-//header('HTTP/1.1 200 OK');
-//header('Location: http://'.$_SERVER['HTTP_HOST'].'/cookBookPHP/recipes.php');
+header('HTTP/1.1 200 OK');
+header('Location: http://'.$_SERVER['HTTP_HOST'].'/cookBookPHP/recipes.php');

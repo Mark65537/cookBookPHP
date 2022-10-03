@@ -10,20 +10,20 @@
         $name = $result->name;
         $ingredients = $result->ingredients;
         $steps = $result->steps;
-        echo <<< END
-        <h1>Detile Recipe</h1>
-
-
-
-        <div class='bg-light shadow-sm mx-auto' style='width: 80%; height: 200px; border-radius: 21px 21px 0 0;'>
-                    <image class='recipeImg' src='/images/$foto'>
-                    <span>
-                        <label>Recipe name: <b>$name</b>
-                        <br>Ingredients: $ingredients
-                        <br>Steps: $steps</label>
-                    </span>
-        </div><p>
-END;
+        echo "
+            <h1>Detile Recipe</h1>
+    
+    
+    
+            <div class='bg-light shadow-sm mx-auto' style='width: 80%; height: 200px; border-radius: 21px 21px 0 0;'>
+                        <image class='recipeImg' src='/images/$foto'>
+                        <span>
+                            <label>Recipe name: <b>$name</b>
+                            <br>Ingredients: $ingredients
+                            <br>Steps: $steps</label>
+                        </span>
+            </div><p>
+        ";
 
     }else{
         echo "Error to show detiles";
